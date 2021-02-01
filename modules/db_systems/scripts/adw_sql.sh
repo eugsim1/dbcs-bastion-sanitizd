@@ -1,4 +1,4 @@
-sqlplus admin/'BEstrO0ng_#12'@adbdw0_high << EOF
+sqlplus admin/'DBCS_PASSWORD'@adbdw0_high << EOF
 drop user DATASAFE_ADMIN  cascade;
 CREATE USER DATASAFE_ADMIN identified by "MY_PASSWORD"
 DEFAULT TABLESPACE "DATA"
@@ -6,12 +6,12 @@ TEMPORARY TABLESPACE "TEMP";
 GRANT CONNECT, RESOURCE TO DATASAFE_ADMIN;
 EOF
 
-sqlplus admin/'BEstrO0ng_#12'@adbdw0_high << EOF
+sqlplus admin/'DBCS_PASSWORD'@adbdw0_high << EOF
 @dscs_privileges.sql  DATASAFE_ADMIN GRANT ALL -VERBOSE
 EOF
 
 
-sqlplus admin/'BEstrO0ng_#12'@adbdw0_high << EOF
+sqlplus admin/'DBCS_PASSWORD'@adbdw0_high << EOF
 drop user hr cascade;
 create user hr identified by "MY_PASSWORD";
 GRANT DWROLE TO hr;
@@ -20,7 +20,7 @@ EOF
 
 
 
-sqlplus admin/'BEstrO0ng_#12'@adbdw0_high << EOF 
+sqlplus admin/'DBCS_PASSWORD'@adbdw0_high << EOF 
 conn hr/'MY_PASSWORD'
 
 CREATE TABLE COUNTRIES 
@@ -2970,7 +2970,7 @@ END;
 EOF
 
 
-sqlplus admin/'BEstrO0ng_#12'@adbdw0_high << EOF 
+sqlplus admin/'DBCS_PASSWORD'@adbdw0_high << EOF 
 conn hr/'MY_PASSWORD'
 select table_name  from user_tables order  by table_name  asc;
 EOF

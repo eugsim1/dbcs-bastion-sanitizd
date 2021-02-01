@@ -5,7 +5,7 @@
 ##   define parameters which are passed in.
 ##   generate hr schema and dummy data to be used with datasafe labs
 ##   adw_gen_sql.sh "`cat sql_connect.sh`"  "`cat sql_hr_connect.sh`" > adw_sql.sh
-##   1/ cat sql_connect.sh     ====> sqlplus admin/'BEstrO0ng_#12'@adbdw0_high connection string to target DB 
+##   1/ cat sql_connect.sh     ====> sqlplus admin/'DBCS_PASSWORD'@adbdw0_high connection string to target DB 
 ##   2/ cat sql_hr_connect.sh  ====> sqlplus hr/'MY_PASSWORD'@datasf0_high     connection for the hr schema
 ###   remove from the last user the ',' 
 ##source env-tns
@@ -803,7 +803,7 @@ select LAST_NAME, FIRST_NAME, EMAIL from HCM1.employees where manager_id = 183; 
 column DBA_Work1 format a25
 select null as "DBA_Work1" from dual;
 spool off
-conn admin/BEstrO0ng_#12@AUTONOMOUS
+conn admin/DBCS_PASSWORD@AUTONOMOUS
 spool admin1.txt
 show user; 
 
@@ -1028,7 +1028,7 @@ select LAST_NAME, FIRST_NAME, EMAIL from HCM1.employees where manager_id = &EMP_
 column DBA_Activity format a25
 select null as "DBA_Activity" from dual;
 
-connect admin/BEstrO0ng_#12@AUTONOMOUS
+connect admin/DBCS_PASSWORD@AUTONOMOUS
 show user; 
 
 -- 
@@ -1280,7 +1280,7 @@ commit;
 -- This section is is an example of normal DBA, Application, End-user activity.
 -- These queries should return successful. Queries might fail in ADB.
 -- 
-connect admin/BEstrO0ng_#12@AUTONOMOUS
+connect admin/DBCS_PASSWORD@AUTONOMOUS
 show user;
 
 set serveroutput on;
@@ -1336,7 +1336,7 @@ grant execute on dbms_ldap to HCM1
 --
 -- Reconnect to our original user
 --
-connect admin/BEstrO0ng_#12@AUTONOMOUS
+connect admin/DBCS_PASSWORD@AUTONOMOUS
 show user;
 
 /*************************************************************************************************/

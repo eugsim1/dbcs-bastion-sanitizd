@@ -1,1 +1,1 @@
-sqlplus admin/'BEstrO0ng_#12'@adbdw0_high
+sqlplus admin/'DBCS_PASSWORD'@adbdw0_high

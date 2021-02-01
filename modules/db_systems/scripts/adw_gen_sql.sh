@@ -5,7 +5,7 @@
 ##   define parameters which are passed in.
 ##   generate hr schema and dummy data to be used with datasafe labs
 ##   adw_gen_sql.sh "`cat sql_connect.sh`"  "`cat sql_hr_connect.sh`" > adw_sql.sh
-##   1/ cat sql_connect.sh     ====> sqlplus admin/'BEstrO0ng_#12'@adbdw0_high connection string to target DB 
+##   1/ cat sql_connect.sh     ====> sqlplus admin/'DBCS_PASSWORD'@adbdw0_high connection string to target DB 
 ##   2/ cat sql_hr_connect.sh  ====> sqlplus hr/'MY_PASSWORD'@datasf0_high     connection for the hr schema
 ###   remove from the last user the ',' 
 ##source env-tns

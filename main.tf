@@ -175,11 +175,11 @@ module "database" {
     is_dbcs_public          = var.is_dbcs_public          #true
     create_dbcs_backup      = var.create_dbcs_backup      #true
     create_data_guard       = var.create_data_guard       #
-    database_admin_password = var.database_admin_password #"BEstrO0ng_#12"
-    database_user_password  = var.database_user_password  #"BEstrO0ng_#12"
+    database_admin_password = var.database_admin_password #"DBCS_PASSWORD"
+    database_user_password  = var.database_user_password  #"DBCS_PASSWORD"
     #Optional
     database_backup_id                  = ""                               # (Required when source=DB_BACKUP) The backup OCID.
-    database_backup_tde_password        = var.database_backup_tde_password ##"BEstrO0ng_#12" # Required when source=DATABASE | DB_BACKUP) The password to open the TDE wallet.
+    database_backup_tde_password        = var.database_backup_tde_password ##"DBCS_PASSWORD" # Required when source=DATABASE | DB_BACKUP) The password to open the TDE wallet.
     database_character_set              = var.database_character_set       ##"AL32UTF8"
     database_database_id                = ""                               # (Required when source=DATABASE) The database OCID.
     database_database_software_image_id = ""                               # (Applicable when source=NONE) The database software image OCID
@@ -207,7 +207,7 @@ module "database" {
     }                                                                                 #Applicable when source=DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace
     database_ncharacter_set                        = var.database_ncharacter_set      ##"AL16UTF16"     # (Applicable when source=NONE) The national character set for the database. The default is AL16UTF16.
     database_pdb_name                              = var.database_pdb_name            ##"pdbName"       # (Applicable when source=NONE) The name of the pluggable database. The name must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters.
-    database_tde_wallet_password                   = var.database_tde_wallet_password ##"BEstrO0ng_#12" # (Applicable when source=NONE) The optional password to open the TDE wallet. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numeric, and two special characters.
+    database_tde_wallet_password                   = var.database_tde_wallet_password ##"DBCS_PASSWORD" # (Applicable when source=NONE) The optional password to open the TDE wallet. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numeric, and two special characters.
     database_time_stamp_for_point_in_time_recovery = ""                               # Applicable when source=DATABASE) The point in time of the original database from which the new database is created. If not specifed, the latest
 
     #Optional

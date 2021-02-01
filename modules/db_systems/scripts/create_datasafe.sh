@@ -50,7 +50,7 @@ cd /home/oracle/scripts
 
 echo ${DB_NAME}
 
-sqlplus sys/'BEstrO0ng_#12'@$DB_NAME as sysdba <<EOF
+sqlplus sys/'DBCS_PASSWORD'@$DB_NAME as sysdba <<EOF
 drop USER C##DATASAFE_ADMIN cascade;
 CREATE USER C##DATASAFE_ADMIN identified by "WElcome1412#!" container=all
 default tablespace users
@@ -59,7 +59,7 @@ quota unlimited on users;
 GRANT CONNECT, RESOURCE TO  C##DATASAFE_ADMIN;
 EOF
 
-sqlplus  sys/'BEstrO0ng_#12'@$DB_NAME as sysdba <<EOF 
+sqlplus  sys/'DBCS_PASSWORD'@$DB_NAME as sysdba <<EOF 
 SET PAGESIZE 0;
 col username format a20
 SELECT distinct username, con_id FROM cdb_users
@@ -67,19 +67,19 @@ WHERE username='C##DATASAFE_ADMIN';
 EOF
 
 
-sqlplus sys/'BEstrO0ng_#12'@$DB_NAME as sysdba <<EOF  
+sqlplus sys/'DBCS_PASSWORD'@$DB_NAME as sysdba <<EOF  
 SET PAGESIZE 0;
 select * from dba_users
 EOF
 
 
-sqlplus sys/'BEstrO0ng_#12'@$DB_NAME as sysdba <<EOF 
+sqlplus sys/'DBCS_PASSWORD'@$DB_NAME as sysdba <<EOF 
 SET PAGESIZE 0;
 select username from dba_users order by username asc;
 EOF
 
 
-sqlplus sys/'BEstrO0ng_#12'@$DB_NAME as sysdba<<EOF 
+sqlplus sys/'DBCS_PASSWORD'@$DB_NAME as sysdba<<EOF 
 alter session set container=$PDB1;
 drop USER DATASAFE_ADMIN cascade;
 CREATE USER DATASAFE_ADMIN identified by "WElcome1412#!" 
@@ -90,7 +90,7 @@ GRANT CONNECT, RESOURCE TO DATASAFE_ADMIN;
 EOF
 
 cd /home/oracle/scripts
-sqlplus sys/'BEstrO0ng_#12'@$DB_NAME as sysdba <<EOF	 
+sqlplus sys/'DBCS_PASSWORD'@$DB_NAME as sysdba <<EOF	 
 alter session set container=$PDB1;
 @dscs_privileges.sql  DATASAFE_ADMIN GRANT ALL -VERBOSE
 
@@ -102,7 +102,7 @@ grant ROLE 'AUDIT_SETTING' to  DATASAFE_ADMIN;;
 EOF
 
  
-sqlplus sys/'BEstrO0ng_#12'@$DB_NAME as sysdba <<EOF  
+sqlplus sys/'DBCS_PASSWORD'@$DB_NAME as sysdba <<EOF  
 alter session set container=$PDB1;
 drop USER OE cascade;
 CREATE USER OE identified by "WElcome1412#!" 
@@ -133,16 +133,16 @@ unzip -d .. swingbench261076.zip
 
 
 cd ../swingbench/bin
-./oewizard -cl -create -cs //localhost/$PDB1.${domainFQDN} -scale "0.3" -u OE -p 'WElcome1412#!' -ts users -tc 7 -v   -dba 'sys as sysdba' -dbap BEstrO0ng_#12 
+./oewizard -cl -create -cs //localhost/$PDB1.${domainFQDN} -scale "0.3" -u OE -p 'WElcome1412#!' -ts users -tc 7 -v   -dba 'sys as sysdba' -dbap DBCS_PASSWORD 
 
 
 #Cloning PDB Within the Same CDB
 
-sqlplus sys/'BEstrO0ng_#12'@$DB_NAME as sysdba << EOF  
+sqlplus sys/'DBCS_PASSWORD'@$DB_NAME as sysdba << EOF  
 alter pluggable database $PDB1 close;
 alter pluggable database $PDB1 open read only;
 alter system set db_create_file_dest = '/u02/app/oracle/oradata/pdb2';
-CREATE PLUGGABLE DATABASE pdb2 FROM $PDB1 KEYSTORE IDENTIFIED BY "BEstrO0ng_#12";
+CREATE PLUGGABLE DATABASE pdb2 FROM $PDB1 KEYSTORE IDENTIFIED BY "DBCS_PASSWORD";
 
 select name, open_mode from v\$pdbs;
 alter pluggable database PDB2 close;

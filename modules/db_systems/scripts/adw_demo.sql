@@ -66,22 +66,22 @@ def PDB_NAME = ptadw1jan20_high
 -- On ADB your ADMIN_USER is probably admin
 --
 def ADMIN_USER = admin
-def ADMIN_PW = BEstrO0ng_#12
+def ADMIN_PW = DBCS_PASSWORD
 --
 -- On PDB your ADMIN_USER is probably admin
 --
 --def ADMIN_USER = system
---def ADMIN_PW = BEstrO0ng_#12
+--def ADMIN_PW = DBCS_PASSWORD
 
 --
 def DATASAFE_ADMIN_USER = DATASAFE_ADMIN
-def DATASAFE_ADMIN_PW = BEstrO0ng_#12
+def DATASAFE_ADMIN_PW = DBCS_PASSWORD
 --
 def HCM_USER = HCM1
-def HCM_PW = BEstrO0ng_#12
+def HCM_PW = DBCS_PASSWORD
 --
 def HCM2_USER = HCM2
-def HCM_PW = BEstrO0ng_#12
+def HCM_PW = DBCS_PASSWORD
 --
 def DBA_DEBRA = DBA_DEBRA
 def DEB_PW = WElcome1412#
