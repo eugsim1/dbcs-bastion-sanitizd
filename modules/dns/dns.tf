@@ -1,25 +1,4 @@
-###
-### CloudSecWorkshop ocid1.compartment.oc1..aaaaaaaaoctz26zocbcicfpxxmxbmmzyxa4kbweepqkeg6akuwqjuehw4bta
-###
-########## CloudSecWorkshop ocid1.compartment.oc1..aaaaaaaaoctz26zocbcicfpxxmxbmmzyxa4kbweepqkeg6akuwqjuehw4bta
-########## DataSafeWorkshop ocid1.compartment.oc1..aaaaaaaakflr6popkgcfxehemfvkbuhdjhra67v5rilxiut332jofgzjpclq
-########## Workshops ocid1.compartment.oc1..aaaaaaaakjdnf7ik2kejcaj73uwx6tsochnlq5olj3vebgbwcf67bjnab3ya
-########## 
-########## Workshops
-########## oraclecloudpursuitlabs.com ocid1.dns-zone.oc1..83a5c2de2fda43dfb255c99dca23bb1c
-########## CloudSecWorkshop
-########## mycloudip.tk	Primary	ocid1.dns-zone.oc1..48a33377ffaf44d296d40ef65a2c1267
-########## cloudwaaf.tk	Primary	ocid1.dns-zone.oc1..cff9b583010d4f3e827a34fc3a7e52e2	
-########## secemeateam.tk	Primary	ocid1.dns-zone.oc1..bf0b2b57fb08472c9b8eda05040faf28
-########## nodenginx.tk ocid1.dns-zone.oc1..18af76486b344166b9990be5a25f1bec
-########## cloudtestdrive.tk ocid1.dns-zone.oc1..0863788d175445e6a0270705ca13faaa
-########## aliascloud.tk ocid1.dns-zone.oc1..e6def584bb3043dc9f19bdcf8f27e58c
-########## cloudsec.tk ocid1.dns-zone.oc1..1de56f84ab864981bb8ec9d8a6719f06
 
-#dns_compartment_id= "ocid1.compartment.oc1..aaaaaaaaoctz26zocbcicfpxxmxbmmzyxa4kbweepqkeg6akuwqjuehw4bta"
-#dns_domain= "load-balancer.secemeateam.tk"
-##dns_rdata= ""
-#dns_zone_name_or_id= "ocid1.dns-zone.oc1..cff9b583010d4f3e827a34fc3a7e52e2"
 
 
 variable "dns_server_config" {
