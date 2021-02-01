@@ -1,0 +1,37 @@
+### what this terraform project is creating ?
+1 bastion with 2 backend web servers + one loadbalancer
+Bastion is on public reg subnet
+backend servers on private subnet / the can provision nginx with wildcard certs / or node.js => for the node.js i have to install code to reply to requests
+dbcs can be in public or in private networks
+loadbalancer in public 
+certs => several wildcarts certs for the loadbalancer to setup ssl scenarios => ssl termination / end2end ssl ...
+dataguard > local vnc works only with explicit vcn rules not with nsg
+
+
+How you can you it ?
+
+there is a terraform.tfvars
+
+there are some variables that they can setup to create the bastion, the backend servers, the database , the dataguard ... etc etc
+this is a living project so excpet the code to move on quickly
+
+Some parts are copied and modified from other Oracle tf modules, some other part are rewritten
+
+You might find public and private keys ... so please please dont be a jack***s to run stupid anonymous scripts to gather the keys and report them wherever trying to make your seld famous or get some bucks from wherever 
+the keys are generated everytime the project is run so dont try to report you get nothing but useless pain
+
+the infos that you might find , or believe that will shown you secrets on Oracle cloud dont exist here
+
+this is a personal project with no links or support from any company 
+
+
+### security features
+the network module setup:
+ a waaf security list
+ a dbcs nsg list => bastion + dbcs are linked with 2 nsg groups
+ 
+## to do implement waaf and link waaf / lb / node.js / database
+## create autonomous
+## register the databases with datasafe
+## create logging framework 
+## create dataguard / make backup of the database

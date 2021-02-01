@@ -1,0 +1,107 @@
+/*
+### https://www.terraform.io/docs/providers/oci/r/database_db_system.html
+resource "oci_database_db_system" "dbcs_system" {
+  availability_domain = var.availability_domain.name
+  compartment_id      = var.oci_provider.compartment_ocid
+  count               = var.dbcs.instance_count
+
+
+
+  db_home {
+    database {
+      admin_password = var.dbcs.database_admin_password
+      #backup_id                  = var.dbcs.database_backup_id           #(Required when source=DB_BACKUP) The backup OCID.
+      #backup_tde_password        = var.dbcs.database_backup_tde_password # Required when source=DATABASE | DB_BACKUP) 
+      character_set = var.dbcs.database_character_set
+      database_id   = var.dbcs.database_database_id #  (Required when source=DATABASE) 
+      #database_software_image_id = var.dbcs.database_database_software_image_id #  (Applicable when source=NONE)
+
+      db_backup_config {
+        ####### -- auto_backup_enabled = var.dbcs.db_backup_config_auto_backup_enabled #  (Applicable when source=DB_SYSTEM | NONE)
+        ####### -- auto_backup_window  = var.dbcs.db_backup_config_auto_backup_window  # Applicable when source=DB_SYSTEM | NONE) (Updatable) Time window selected for initiating automatic backup for the database system.
+
+                  backup_destination_details {
+                   #Optional
+             ####### --       id   = var.dbcs.backup_destination_details_id
+             ####### --       type = var.dbcs.backup_destination_details_type
+                }
+
+
+              ####### --  recovery_window_in_days = var.dbcs.db_backup_config_recovery_window_in_days
+      }
+      ####### --      db_domain                             = var.dbcs.database_db_domain
+      db_name        = var.dbcs.database_db_name
+      db_workload    = var.dbcs.database_db_workload
+      ####### -- defined_tags   = var.dbcs.database_defined_tags
+      ####### -- freeform_tags  = var.dbcs.database_freeform_tags
+      ncharacter_set = var.dbcs.database_ncharacter_set
+      pdb_name       = var.dbcs.database_pdb_name
+      ####### --      tde_wallet_password                   = var.dbcs.database_tde_wallet_password
+      ####### --      time_stamp_for_point_in_time_recovery = var.dbcs.database_time_stamp_for_point_in_time_recovery
+    }
+    #Optional
+    ####### --     database_software_image_id = var.dbcs.db_home_database_software_image_id
+    db_version   = var.dbcs.db_home_db_version
+    ####### -- defined_tags = var.dbcs.db_home_defined_tags
+    display_name = var.dbcs.db_home_display_name
+    ####### -- freeform_tags              = var.dbcs.db_home_freeform_tags
+  }
+  hostname        = var.dbcs.database_hostname
+  shape           = var.dbcs.database_shape
+  ssh_public_keys = [ file("wls-wdt-testkey-pub.txt") ] ##var.dbcs.database_ssh_public_keys #local.public_keys
+  subnet_id       = var.dbcs.database_subnet_id
+
+  #Optional
+  ####### --   backup_network_nsg_ids  = var.dbcs.database_backup_network_nsg_ids #Applicable only to Exadata systems. 
+  ####### --     backup_subnet_id        = var.dbcs.database_backup_subnet_id #Applicable only to Exadata systems. 
+  ####### --    cluster_name            = var.dbcs.database_cluster_name
+  cpu_core_count = var.dbcs.database_cpu_core_count
+  ####### --     data_storage_percentage = var.dbcs.database_data_storage_percentage
+  data_storage_size_in_gb = var.dbcs.database_data_storage_size_in_gb
+  database_edition        = var.dbcs.database_database_edition
+  db_system_options {
+
+    #Optional
+    storage_management = var.dbcs.db_system_options_storage_management
+  }
+  defined_tags    = var.dbcs.database_defined_tags
+  disk_redundancy = var.dbcs.database_disk_redundancy
+  display_name    = var.dbcs.database_display_name
+  ####### --  domain             = var.dbcs.database_domain
+  ####### --   fault_domains      = data.oci_identity_fault_domains.dbcs_fault_domains.fault_domains[*].name   ###var.dbcs.database_fault_domains
+  ####### -- freeform_tags = var.dbcs.freeform_tags ##{ "Department" = "Finance" }
+  ####### --   kms_key_id         = var.dbcs.database_kms_key_id
+  ####### --   ms_key_version_id = var.dbcs.database_kms_key_version_id
+  license_model = var.dbcs.database_license_model
+  ####### --   maintenance_window_details {
+  ####### -- 
+  ####### --     #Optional
+  ####### --     days_of_week {
+  ####### -- 
+  ####### --       #Optional
+  ####### --       name = var.dbcs.maintenance_window_details_days_of_week_name
+  ####### --     }
+  ####### --     hours_of_day       = var.dbcs.maintenance_window_details_hours_of_day
+  ####### --     lead_time_in_weeks = var.dbcs.maintenance_window_details_lead_time_in_weeks
+  ####### --     months {
+  ####### -- 
+  ####### --       #Optional
+  ####### --       name = var.dbcs.maintenance_window_details_months_name
+  ####### --     }
+  ####### --     preference     = var.dbcs.maintenance_window_details_preference
+  ####### --     weeks_of_month = var.dbcs.maintenance_window_details_weeks_of_month
+  ####### --   }
+  node_count = var.dbcs.database_node_count
+  ####### --     nsg_ids             = var.dbcs.database_nsg_ids
+  ####### --     private_ip          = var.dbcs.database_private_ip
+  ####### -- source              = var.dbcs.database_source
+  ####### -- source_db_system_id = var.dbcs.database_source_db_system_id
+   ####### --      sparse_diskgroup    = var.dbcs.database_sparse_diskgroup ### BUG
+  time_zone           = var.dbcs.database_time_zone
+
+  lifecycle {
+    ignore_changes = ["hostname", "freeform_tags", db_home[0].database[0].admin_password]
+  }
+
+}
+*/

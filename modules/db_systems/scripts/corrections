@@ -1,0 +1,2 @@
+add this sqlnet.ora
+NAMES.DIRECTORY_PATH=(ezconnect, tnsnames)

@@ -1,0 +1,31 @@
+##### template LISTENER =
+CONNECT_TIMEOUT_LISTENER = 0
+SSL_CLIENT_AUTHENTICATION = FALSE
+WALLET_LOCATION = 
+	(SOURCE =    
+		(METHOD = FILE)    
+		(METHOD_DATA =       
+			(DIRECTORY = $DB_WALLET_DIR/$server)    
+		)   
+	)
+
+
+LISTENER = (ADDRESS_LIST =    
+	(ADDRESS=(PROTOCOL=ipc)(KEY=19c))    
+	(ADDRESS=(PROTOCOL=tcp)(HOST=$server)(PORT=1521))
+	(ADDRESS=(PROTOCOL=tcp)(HOST=$server)(PORT=1552))
+	(ADDRESS=(PROTOCOL=tcps)(HOST=$server)(PORT=1553))
+	)
+
+
+
+  
+SID_LIST_LISTENER=
+  (SID_LIST=
+    (SID_DESC=
+      (GLOBAL_DBNAME=ESTEST1.PUBSUB.EBSSECURITY.ORACLEVCN.COM)
+      (ORACLE_HOME=/u01/app/oracle/product/19.0.0/dbhome_1)
+      (SID_NAME=estest1))
+  )  
+
+####################### end of the template

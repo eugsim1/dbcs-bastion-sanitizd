@@ -1,0 +1,5 @@
+CONN admin/BEstrO0ng_#12@AUTONOMOUS
+ALTER USER scott IDENTIFIED BY tiger ACCOUNT UNLOCK;
+
+CREATE OR REPLACE DIRECTORY test_dir AS '/u01/app/oracle/oradata/';
+GRANT READ, WRITE ON DIRECTORY test_dir TO scott;

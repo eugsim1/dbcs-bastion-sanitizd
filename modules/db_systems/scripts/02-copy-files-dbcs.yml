@@ -1,0 +1,168 @@
+---
+-   hosts: all
+    gather_facts: False
+    tasks:
+
+      - name: adw_gen_sql.sh
+        copy:
+         src: adw_gen_sql.sh
+         dest: /home/oracle/scripts
+         directory_mode: no
+         owner: oracle
+         group: oinstall
+         mode: "u+rwx"
+        tags:
+          - copy
+        become: true
+        become_user: oracle     
+
+## only for gg       - name: enable_gg_replication.sh
+## only for gg         copy:
+## only for gg          src: enable_gg_replication.sh
+## only for gg          dest: /home/oracle/scripts
+## only for gg          directory_mode: no
+## only for gg          owner: oracle
+## only for gg          group: oinstall
+## only for gg          mode: "u+rwx"
+## only for gg         tags:
+## only for gg           - copy
+## only for gg         become: true
+## only for gg         become_user: oracle          
+
+## only for gg       - name: copy listener_template  to dbcs_servers
+## only for gg         copy:
+## only for gg          src: listener_template.ora
+## only for gg          dest: /u01/app/oracle/product/19.0.0/dbhome_1/network/admin
+## only for gg          directory_mode: no
+## only for gg          owner: oracle
+## only for gg          group: oinstall
+## only for gg          mode: "u+rwx"
+## only for gg         tags:
+## only for gg           - copy
+## only for gg         become: true
+## only for gg         become_user: oracle
+
+#      - name: copy listener_sid  to dbcs_servers
+#        copy:
+#         src: listener.ora
+#         dest: /u01/app/oracle/product/19.0.0/dbhome_1/network/admin
+#         directory_mode: no
+#         owner: oracle
+#         group: oinstall
+#         mode: "u+rwx"
+#        tags:
+#          - copy
+#        become: true
+#        become_user: oracle        
+
+## only for gg       - name: copy tns_template  to dbcs_servers
+## only for gg         copy:
+## only for gg          src: tns_names_template
+## only for gg          dest: /u01/app/oracle/product/19.0.0/dbhome_1/network/admin
+## only for gg          directory_mode: no
+## only for gg          owner: oracle
+## only for gg          group: oinstall
+## only for gg          mode: "u+rwx"
+## only for gg         tags:
+## only for gg           - copy
+## only for gg         become: true
+## only for gg         become_user: oracle        
+        
+      - name: dscs_privileges.sql
+        copy:
+         src: dscs_privileges.sql
+         dest: /home/oracle/scripts
+         directory_mode: no
+         owner: oracle
+         group: oinstall
+         mode: "u+rwx"
+        tags:
+          - copy
+        become: true
+        become_user: oracle
+        
+      - name: create_wallet.sh
+        copy:
+         src: create_wallet.sh
+         dest: /home/oracle/scripts
+         directory_mode: no
+         owner: oracle
+         group: oinstall
+         mode: "u+rwx"
+        tags:
+          - copy
+        become: true
+        become_user: oracle   
+
+      - name: create_datasafe.sh
+        copy:
+         src: create_datasafe.sh
+         dest: /home/oracle/scripts
+         directory_mode: no
+         owner: oracle
+         group: oinstall
+         mode: "u+rwx"
+        tags:
+          - copy
+        become: true
+        become_user: oracle          
+        
+      - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+        shell: dos2unix /home/oracle/scripts/*   
+        register: dos2unix
+        tags:
+          - dos2unix
+        become: true
+        become_user: oracle 
+      - debug: var=dos2unix.stdout_lines        
+        
+      - name: create wallet
+        command: sh   /home/oracle/scripts/create_wallet.sh
+        register: create_wallet
+        tags:
+          - create_wallet
+        become: yes
+        become_user: oracle
+        ignore_errors: yes
+
+      - debug: var=create_wallet.stdout_lines
+
+      - name: create datasafe admin
+        command: sh    /home/oracle/scripts/create_datasafe.sh 
+        register: create_datasafe
+        tags:
+          - create_datasafe.sh
+        become: yes
+        become_user: oracle
+        ignore_errors: yes
+      - debug: var=create_datasafe.stdout_lines
+      
+                   
+      
+      - name: adw_gen_sql.sh
+        command: sh    /home/oracle/scripts/adw_gen_sql.sh
+        register: adw_gen_sql
+        tags:
+          - adw_gen_sql.sh
+        become: yes
+        become_user: oracle
+        ignore_errors: yes
+
+      - debug: var=adw_gen_sql.stdout_lines      
+           
+        
+      
+## only for gg       - name: enable goldegate replication
+## only for gg         command: sh    /home/oracle/scripts/enable_gg_replication.sh
+## only for gg         register: enable_goldegate
+## only for gg         tags:
+## only for gg           - enable_gg_replication.sh
+## only for gg         become: yes
+## only for gg         become_user: oracle
+## only for gg         ignore_errors: yes
+## only for gg 
+## only for gg       - debug: var=enable_goldegate.stdout_lines      
+      
+
+
+

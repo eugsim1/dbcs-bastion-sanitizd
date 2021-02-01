@@ -1,0 +1,32 @@
+---
+-   hosts: all
+    gather_facts: False
+    tasks:
+
+#      - name: update os create oracle user configure password and public keys
+#        script: /home/oracle/sharding/update-all.sh
+#        tags:
+#         - geninst
+#        become: true
+#        become_user: root
+#        become_method: sudo
+#        ignore_errors: yes
+      - name: init dbcs server
+        script: init.sh
+        register: out
+        tags:
+         - linux
+        become: true
+        become_user: root
+        become_method: sudo
+        ignore_errors: yes
+      - debug: var=out.stdout_lines
+#      - name: create certs / and reconfigure the ebs endpoint for the waf firewall
+#        script: /home/oracle/terraform-excercises/ebs3-workshop-deploymentebs12/cert.sh
+#        register: cert
+#        tags:
+#         - linux
+#        become: true
+#        become_user: oracle
+#        ignore_errors: yes
+#      - debug: var=cert.stdout_lines      

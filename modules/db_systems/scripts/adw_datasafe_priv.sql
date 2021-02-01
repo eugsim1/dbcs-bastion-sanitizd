@@ -1,0 +1,10 @@
+/*  script to run after datasafe registration */
+/* https://docs.oracle.com/en/cloud/paas/data-safe/udscs/register-autonomous-databases-that-have-public-ip-addresses.html#GUID-1026A408-2D57-420C-927B-588948C2A89C
+DS$ASSESSMENT_ROLE and DS$AUDIT_COLLECTION_ROLE are already granted 
+*/
+
+-- EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$ASSESSMENT_ROLE');
+-- EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$AUDIT_COLLECTION_ROLE');
+EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$DATA_DISCOVERY_ROLE');
+EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$DATA_MASKING_ROLE');
+EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$AUDIT_SETTING_ROLE');

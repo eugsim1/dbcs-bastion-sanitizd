@@ -1,0 +1,7 @@
+UserKnownHostsFile /dev/null
+ControlMaster auto
+ControlPath /tmp/ssh-%r@%h:%p
+StrictHostKeyChecking no
+Hosts *
+ user oracle
+ IdentityFile ~/.ssh/priv.txt

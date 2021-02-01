@@ -1,0 +1,14 @@
+## ssh -J user1@host1:port1 user2@host2:port2
+UserKnownHostsFile /dev/null
+ControlMaster auto
+ControlPath /tmp/ssh-%r@%h:%p
+StrictHostKeyChecking no
+Host bastion
+  Hostname bastion
+  User oracle
+  IdentityFile ~/.ssh/priv.txt
+  
+Host 10.*
+ user oracle
+ IdentityFile ~/.ssh/priv.txt
+ ProxyJump bastion
