@@ -162,26 +162,6 @@ resource "oci_load_balancer_certificate" "all_certificates" {
 
 
 
-/*
-resource "oci_load_balancer_path_route_set" "test_path_route_set" {
-  #Required
-  load_balancer_id = oci_load_balancer.load_balancer.id
-  name             = "pr-set1"
-  path_routes {
-    #Required
-    backend_set_name = oci_load_balancer_backend_set.lb-bes1.name
-    path             = "/example/video/123"
-    path_match_type {
-      #Required
-      match_type = "EXACT_MATCH"
-    }
-  }
-}
-*/
-
-
-
-
 
 
 ### Adds a backend server to a backend set.
@@ -200,108 +180,12 @@ resource "oci_load_balancer_backend" "lb-be1" {
 
 
 
-/*
-resource "oci_load_balancer_backend" "lb-be2" {
-  load_balancer_id = oci_load_balancer.load_balancer.id
-  backendset_name  = oci_load_balancer_backend_set.lb-bes1.name
-  ip_address       = var.ip_adress_backend[1]
-  port             = 80
-  backup           = false
-  drain            = false
-  offline          = false
-  weight           = 1
-}
-*/
-
-/*
-
-resource "oci_load_balancer_rule_set" "test_rule_set" {
-  items {
-    action = "ADD_HTTP_REQUEST_HEADER"
-    header = "example_header_name"
-    value  = "example_header_value"
-  }
-
-  items {
-    action          = "CONTROL_ACCESS_USING_HTTP_METHODS"
-    allowed_methods = ["GET", "POST"]
-    status_code     = "405"
-  }
-
-  items {
-    action      = "ALLOW"
-    description = "example vcn ACL"
-
-    conditions {
-      attribute_name  = "SOURCE_VCN_ID"
-      attribute_value = oci_core_vcn.lbvcn1.id
-    }
-
-    conditions {
-      attribute_name  = "SOURCE_VCN_IP_ADDRESS"
-      attribute_value = "10.10.1.0/24"
-    }
-  }
-
-  items {
-    action = "REDIRECT"
-
-    conditions {
-      attribute_name  = "PATH"
-      attribute_value = "/example"
-      operator        = "FORCE_LONGEST_PREFIX_MATCH"
-    }
-
-    redirect_uri {
-      protocol = "{protocol}"
-      host     = "in{host}"
-      port     = 8081
-      path     = "{path}/video"
-      query    = "?lang=en"
-    }
-
-    response_code = 302
-  }
-
-  load_balancer_id = oci_load_balancer.load_balancer.id
-  name             = "example_rule_set_name"
-}
-*/
 
 
 
-/*
-resource "oci_core_security_list" "lbsecuritylist" {
-  freeform_tags = { "Creator" : "eugenesimos@oracle.com", "Testing" :"oci-cert" }  
-  display_name   = "lbsecuritylist"
-  compartment_id = oci_core_vcn.lbvcn1.compartment_id
-  vcn_id         = oci_core_vcn.lbvcn1.id
 
-  egress_security_rules {
-    protocol    = "all"
-    destination = "0.0.0.0/0"
-  }
 
-  ingress_security_rules {
-    protocol = "6"
-    source   = "0.0.0.0/0"
 
-    tcp_options {
-      min = 80
-      max = 80
-    }
-  }
 
-  ingress_security_rules {
-    protocol = "6"
-    source   = "0.0.0.0/0"
-
-    tcp_options {
-      min = 443
-      max = 443
-    }
-  }
-}
-*/
 
 
