@@ -117,9 +117,9 @@ locals {
   tcp_protocol  = 6
 }
 
-variable "apollovcn_id" { default = "ocid1.vcn.oc1.eu-frankfurt-1.amaaaaaapvsuo5qa6cueyr2hwz3hxxnov2lf6echirlagnrllqpfok5gbgra" }
-variable "apollo-netwrok-security-group_id" { default = "ocid1.networksecuritygroup.oc1.eu-frankfurt-1.aaaaaaaarpzp3v4ultsg64ypu2xs7j3tdz2nqg4n2vk6h6e6fxg5qngdsgxq" }
-variable "default-vcn" { default = "ocid1.securitylist.oc1.eu-frankfurt-1.aaaaaaaa5wm5ivh46d3tm2vuh6jxcf36hk5liipaiyjxaqpffllvixe6gu3a" }
+variable "apollovcn_id" { default = "' }
+variable "apollo-netwrok-security-group_id" { default = "" }
+variable "default-vcn" { default = "" }
 
 /*
 resource oci_core_network_security_group_security_rule nsg_security_rules {
